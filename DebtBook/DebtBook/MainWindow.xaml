@@ -5,22 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Background="Coral">
+        Title="DebtBook for SWD Assignment" Height="450" Width="800" Background="#315a9e" FontFamily="Palatino Linotype">
+
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
     <DockPanel>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="44*"/>
-                <RowDefinition Height="375*"/>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="332*"/>
+                <RowDefinition Height="40*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="145*"/>
-                <ColumnDefinition Width="53*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Grid.Row="0" FontFamily="Comic Sans MS" FontSize="20" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Debters" VerticalAlignment="Top" Height="28" Margin="252,0" Width="76"/>
-            <StackPanel HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
+            <TextBlock Grid.Column="0" Grid.Row="0" FontSize="35" HorizontalAlignment="Center" TextWrapping="Wrap"
+                       Text="Debtors" VerticalAlignment="Top"
+                       Foreground="AliceBlue" Height="47" Margin="334,0" Width="124" />
+            <ToolBar DockPanel.Dock="Bottom" Height="auto"
+                     FontSize="20" FontWeight="Bold"
+                     Background="#315a9e" Grid.Row="2">
 
-            </StackPanel>
-            
+                <Button ToolTip="Add a new agent"
+                        Content="+" 
+                        Command="{Binding Path=AddCommand}"
+                        Style="{StaticResource ResourceKey=BottonToolbarStyle}"
+                />
+
+                <Button ToolTip="Delete selected agent"
+                        Content="-" 
+                        Command="{Binding Path=DeleteCommand}"
+                        Style="{StaticResource ResourceKey=BottonToolbarStyle}"
+                />
+
+                <Button ToolTip="Delete selected agent"
+                        Content="$" 
+                        Command="{Binding Path=AddDebt}"
+                        Style="{StaticResource ResourceKey=BottonToolbarStyle}"
+                />
+
+
+            </ToolBar>
+                    <ListBox x:Name="DebtInfoBox" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                     FontSize="20" Background="#2c2f33" Foreground="AliceBlue"
+                     ItemsSource="{Binding Path=AllDebtors}"
+                     SelectedItem="{Binding Path=CurrentDebtor}"
+                     SelectedIndex="{Binding Path=CurrentIndex}"
+                     IsSynchronizedWithCurrentItem="True"
+                     ItemTemplate="{StaticResource DebtorTemplate}"/>
+
 
         </Grid>
     </DockPanel>
