@@ -106,7 +106,7 @@ namespace DebtBook
 
         public ICommand AddDebtCommand
         {
-            get { throw new NotImplementedException(); }
+            //åben ny vindue
         }
 
 

@@ -19,6 +19,7 @@ namespace DebtBook
         }
 
         #region GetAndSetters
+
         public string Name
         {
             get { return name; }

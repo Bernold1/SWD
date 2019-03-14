@@ -8,7 +8,7 @@
         Title="DebtBook for SWD Assignment" Height="450" Width="800" Background="#315a9e" FontFamily="Palatino Linotype">
 
     <Window.DataContext>
-        <local:MainWindowViewModel />
+        <local:MainWindowViewModel/>
     </Window.DataContext>
 
     <DockPanel>
@@ -45,18 +45,14 @@
                         Command="{Binding Path=AddDebt}"
                         Style="{StaticResource ResourceKey=BottonToolbarStyle}"
                 />
-
-
             </ToolBar>
-                    <ListBox x:Name="DebtInfoBox" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            <ListBox x:Name="DebtInfoBox" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                      FontSize="20" Background="#2c2f33" Foreground="AliceBlue"
                      ItemsSource="{Binding Path=AllDebtors}"
                      SelectedItem="{Binding Path=CurrentDebtor}"
                      SelectedIndex="{Binding Path=CurrentIndex}"
                      IsSynchronizedWithCurrentItem="True"
                      ItemTemplate="{StaticResource DebtorTemplate}"/>
-
-
         </Grid>
     </DockPanel>
 </Window>
