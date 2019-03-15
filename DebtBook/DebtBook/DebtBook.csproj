@@ -90,6 +90,7 @@
     <Compile Include="DebterLog.xaml.cs">
       <DependentUpon>DebterLog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DebtorLogViewModel.cs" />
     <Compile Include="Model\Debtor.cs" />
     <Compile Include="ViewModel\AddDebterViewModel.cs" />
     <Compile Include="ViewModel\INavigationService.cs" />
