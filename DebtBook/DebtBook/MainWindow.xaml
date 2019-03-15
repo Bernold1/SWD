@@ -23,7 +23,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Grid.Row="0" FontSize="35" HorizontalAlignment="Center" TextWrapping="Wrap"
                        Text="Debtors" VerticalAlignment="Top"
-                       Foreground="AliceBlue" Height="47" Margin="334,0" Width="124" />
+                       Foreground="AliceBlue" />
             <ToolBar DockPanel.Dock="Bottom" Height="auto"
                      FontSize="20" FontWeight="Bold"
                      Background="#315a9e" Grid.Row="2">
