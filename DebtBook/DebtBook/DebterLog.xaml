@@ -19,7 +19,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="19,130,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="20"/>
-        <Button x:Name="AddValButton" Content="Add value" HorizontalAlignment="Left" Margin="19,79,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="20"/>
+        <Button x:Name="AddValButton" Content="Add value" Command="{Binding Path=AddValue}" HorizontalAlignment="Left" Margin="19,79,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Height="20"/>
         <TextBox x:Name="ValuetextBox" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Value" VerticalAlignment="Top" Grid.Column="1" Padding="10"/>
     </Grid>
 </Window>

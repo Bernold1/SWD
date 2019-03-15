@@ -14,8 +14,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml.Serialization;
-
-namespace DebtBook
+using DebtBook.Model;
+namespace DebtBook.ViewModel
 {
     public class MainWindowViewModel : BindableBase
     {

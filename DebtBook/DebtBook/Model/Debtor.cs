@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
 
-namespace DebtBook
+namespace DebtBook.Model
 {
     public class Debtor
     {
         private string name;
-        private decimal debt;
+        private ObservableCollection<Debt> debts { get; set; }
 
 
-        public Debtor(string _name, decimal _debt)
+
+        public Debtor(string _name)
         {
             name = _name;
-            debt = _debt;
+            debts = new ObservableCollection<Debt>();
+
         }
 
         #region GetAndSetters
@@ -26,10 +28,9 @@ namespace DebtBook
             set { name = value; }
         }
 
-        public decimal Debt
+        public void AddDebt(Debt _debt)
         {
-            get { return debt;}
-            set { debt = value; }
+            debts.Add(_debt);
         }
 
 
