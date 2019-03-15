@@ -40,11 +40,6 @@
                         Style="{StaticResource ResourceKey=BottonToolbarStyle}"
                 />
 
-                <Button ToolTip="Delete selected agent"
-                        Content="$" 
-                        Command="{Binding Path=AddDebt}"
-                        Style="{StaticResource ResourceKey=BottonToolbarStyle}"
-                />
             </ToolBar>
             <ListBox x:Name="DebtInfoBox" Grid.Row="1"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                      FontSize="20" Background="#2c2f33" Foreground="AliceBlue"

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="DebterLog" Height="450" Width="457.509">
+        Title="DebtorLog" Height="450" Width="457.509">
     <Grid>
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="310" Margin="25,31,0,0" VerticalAlignment="Top" Width="244">
             <ListView.View>

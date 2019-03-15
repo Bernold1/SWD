@@ -8,6 +8,6 @@ namespace DebtBook
 {
     interface INavigationService
     {
-      
+        void show(Object obj);
     }
 }
