@@ -91,6 +91,7 @@
       <DependentUpon>DebterLog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Debtor.cs" />
+    <Compile Include="ViewModel\AddDebterViewModel.cs" />
     <Compile Include="ViewModel\INavigationService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DebtBook
+namespace DebtBook.ViewModel
 {
-    interface INavigationService
+    class AddDebterViewModel
     {
-      
     }
 }
