@@ -15,10 +15,24 @@ namespace DebtBook.ViewModel
     {
 
         private Debtor currentDebtor;
+        private double debt;
 
         public DebtorLogViewModel()
         {
             
+        }
+
+        public double DebtValue
+        {
+            get => debt;
+            set
+            {
+                if (value != debt)
+                {
+                    debt = value;
+                    RaisePropertyChanged();
+                }
+            }
         }
 
         private ICommand _addValue;
@@ -32,6 +46,7 @@ namespace DebtBook.ViewModel
 
         private void AddValue()
         {
+            Debt _debt = new Debt(debt, DateTime.Now);
             
         }
 
