@@ -11,17 +11,29 @@ using DebtBook.Model;
 
 namespace DebtBook.ViewModel
 {
-    public class DebtorLogViewModel
+    public class DebtorLogViewModel : BindableBase
     {
 
-        private Debtor currentDebtor = null;
+        private Debtor currentDebtor;
 
-        //private ICommand _addValue;
-        //public ICommand AddValue
-        //{
+        public DebtorLogViewModel()
+        {
             
-        //}
+        }
 
+        private ICommand _addValue;
+        public ICommand AddValueCommand
+        {
+            get
+            {
+                return _addValue ?? (_addValue = new DelegateCommand(AddValue));
+            }
+        }
+
+        private void AddValue()
+        {
+            
+        }
 
 
     }
