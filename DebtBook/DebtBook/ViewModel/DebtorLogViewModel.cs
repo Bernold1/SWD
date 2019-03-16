@@ -16,19 +16,13 @@ namespace DebtBook.ViewModel
 
         private Debtor currentDebtor = null;
 
-        private ICommand _addValue;
-       
-        public ICommand AddValue
-        {
-            get
-            {
-                return _addValue ?? (_addValue = new DelegateCommand(() =>
-                
+        //private ICommand _addValue;
+        //public ICommand AddValue
+        //{
+            
+        //}
 
-            }
 
-            get { return _addValue ?? (_addValue = new RelayCommand()); }
-        }
 
     }
 }

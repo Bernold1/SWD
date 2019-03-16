@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DebtBook.Model
 {
-    class Debt
+    public class Debt
     {
         public double _debtvalue { get; set; }
         public DateTime _date { get; set; }

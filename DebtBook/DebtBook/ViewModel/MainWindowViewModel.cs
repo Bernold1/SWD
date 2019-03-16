@@ -28,14 +28,14 @@ namespace DebtBook.ViewModel
         {
             DebtorInsertion = new ObservableCollection<Debtor>()
             {
-                new Debtor("James", 199.2m),
-                new Debtor("John", 10.5m)
+                //new Debtor("James", 199.2m),
+                //new Debtor("John", 10.5m)
             };
             CurrentDebtor = DebtorInsertion[0];
 
         }
 
-        #region Getters and seters
+        #region Getters and setters
 
         public Debtor CurrentDebtor
         {

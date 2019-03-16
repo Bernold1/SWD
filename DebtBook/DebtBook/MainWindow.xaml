@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="DebtBook for SWD Assignment" Height="450" Width="800" Background="#315a9e" FontFamily="Palatino Linotype">
 
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:MainWindowViewModel/>
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <DockPanel>
         <Grid>
