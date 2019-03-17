@@ -51,6 +51,17 @@ namespace DebtBook
         {
             debts.Add(_debt);
         }
+
+        public double TotalDebt()
+        {
+            double totalDebt = 0;
+            foreach (Debt d in debts)
+            {
+                totalDebt += d._debtValue;
+            }
+            return totalDebt;
+        }
+
         ///<summary>
         /// 
         ///Shallow copies the Debtor user is trying to add or edit debt on
