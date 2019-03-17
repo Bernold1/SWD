@@ -5,23 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DebtBook"
         mc:Ignorable="d"
-        Title="AddDebterView" Height="189" Width="297" Background="#315a9e" FontFamily="Palatino Linotype" FontSize="12">
+        Title="Add new debtor to debtbook" Height="300" Width="500" Background="#315a9e" 
+        FontFamily="Palatino Linotype" FontSize="16"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45*"/>
-            <RowDefinition Height="44*"/>
-            <RowDefinition Height="69*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="60*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="143*"/>
-            <ColumnDefinition Width="146*"/>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="85*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Foreground="AliceBlue" Background="#2c2f33" Text="Write Name here"/>
-        <TextBox x:Name="ValueTextBox" HorizontalAlignment="Center"  TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Foreground="AliceBlue" Background="#2c2f33" Text="Write Initial debt value here"/>
-        <Label x:Name="NameLabel" Content="Name:" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="AliceBlue"/>
-        <Label x:Name="InitialValLabel" Content="Initial Value:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" Foreground="AliceBlue"/>
-        <Button x:Name="SaveButton" Content="Save" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2" Grid.Row="2" Grid.Column="0" Foreground="AliceBlue" Background="#2c2f33"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="2" Grid.Column="1" Grid.Row="2" Foreground="AliceBlue" Background="#2c2f33"/>
+
+        <TextBox x:Name="NameTextBox"
+                 HorizontalAlignment="Left" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Center"
+                 Grid.Column="1"
+                 Grid.Row="0"
+                 Foreground="AliceBlue"
+                 Background="#2c2f33"
+                 MinWidth="250"
+                 Text="{Binding Path=currentDebtor.Name}"/>
+
+        <TextBox x:Name="ValueTextBox"
+                 HorizontalAlignment="Left"
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Center"
+                 Grid.Column="1"
+                 Grid.Row="1" 
+                 Foreground="AliceBlue"
+                 Background="#2c2f33"
+                 MinWidth="250"
+                 Text="{Binding Path=currentDebtor.CurrentDebt}"
+                 />
+
+        <Label x:Name="NameLabel"
+               Content="Name:" 
+               Grid.Column="0" 
+               Grid.Row="0" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center" 
+               Foreground="AliceBlue"  
+               />
+
+        <Label x:Name="InitialValLabel"
+               Content="Initial Value:" 
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Grid.Column="0" 
+               Grid.Row="1" 
+               Foreground="AliceBlue" />
+
+        <WrapPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button x:Name="SaveButton" Content="Save"
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Padding="2"
+                    Foreground="AliceBlue" 
+                    Background="#2c2f33"
+                    TabIndex="5" 
+                    Margin="3"
+                    MinWidth="75"
+                    Command="{Binding Path=SaveDebtorCommand}"/>
+
+            <Button x:Name="CancelButton"
+                    Content="_Cancel" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" 
+                    Padding="2" 
+                    Foreground="AliceBlue" 
+                    Background="#2c2f33" 
+                    Margin="3"
+                    MinWidth="75" IsCancel="True"/>
+        </WrapPanel>
+
 
     </Grid>
 </Window>

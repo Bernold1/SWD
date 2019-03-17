@@ -38,28 +38,28 @@
                 />
 
             </ToolBar>
-            <ListBox Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="20" 
-                     Background="#2c2f33" 
-                     Foreground="AliceBlue">
-                <DataGrid ItemsSource="{Binding Path=AllDebtors}" 
-                          SelectedItem="{Binding Path=CurrentDebtor}"
-                          SelectedIndex="{Binding Path=CurrentIndex}"
+            <DataGrid ItemsSource="{Binding AllDebtors}" 
+                          SelectedItem="{Binding CurrentDebtor}"
+                          SelectedIndex="{Binding CurrentIndex}"
                           IsSynchronizedWithCurrentItem="True"
-                          Grid.Column="3" 
-                          Margin="9,9,9,9"
                           CanUserAddRows="False" 
                           CanUserDeleteRows="False" 
                           IsReadOnly="True"
                           MinRowHeight="12"
-                          Name="dgDebtors"
+                          x:Name="dgDebtors"
+                          Grid.Row="1"
+                          Background="#2c2f33" 
+                          MinColumnWidth="250"
+                          FontSize="16" 
+
+                          
                 >
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseDoubleClick">
-                            <i:InvokeCommandAction Command="{Binding EditDebtCommand}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </DataGrid>
-            </ListBox>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding EditDebtCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DataGrid>
         </Grid>
     </DockPanel>
 </Window>

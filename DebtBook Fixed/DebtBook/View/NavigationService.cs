@@ -20,15 +20,22 @@ namespace DebtBook
             {
                 //ny vindue, viser vinduet og breaker
                 case "AddDebtorViewModel":
-                    window = new AddDebterView();
+                    window = new AddDebterView
+                    {
+                        DataContext = obj
+                    };
                     window.ShowDialog();
+                                        
                         break;
                 case "MainWindowViewModel":
                     window = new MainWindow();
                     window.ShowDialog();
                     break;
                 case "DebtorLogViewModel":
-                    window = new DebterLog();
+                    window = new DebterLog
+                    {
+                        DataContext = obj
+                    };
                     window.ShowDialog();
                     break;
 

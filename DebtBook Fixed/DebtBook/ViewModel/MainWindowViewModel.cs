@@ -70,11 +70,8 @@ namespace DebtBook
             {
                 return _AddDebtorCommand ?? (_AddDebtorCommand = new DelegateCommand(() =>
                 {
-                    var newDebtor = new Debtor();
-                    var vm = new AddDebtorViewModel(newDebtor, "Add a new debtor to you book of debts");
+                    var vm = new AddDebtorViewModel(DebtorInsertion);
                     _iNavigationService.show(vm);
-                    AllDebtors.Add(newDebtor);
-                    currentDebtor = newDebtor;
                 }));
             }
         }
