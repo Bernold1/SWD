@@ -11,6 +11,19 @@ namespace DebtBook.ViewModel
         private Debtor _currentDebtor;
         private ObservableCollection<Debtor> _debtors;
         private Debt _debt;
+        private string _name;
+
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value != _name)
+                {
+                    SetProperty(ref _name, value);
+                }
+            }
+        }
 
 
         public AddDebtorViewModel(ObservableCollection<Debtor> debtors)
@@ -54,7 +67,7 @@ namespace DebtBook.ViewModel
 
         private void AddDebtor()
         {
-            currentDebtor = new Debtor();
+            currentDebtor = new Debtor(_name);
             currentDebtor.addDebt(debt);
             debtors.Add(currentDebtor);
             //RaisePropertyChanged("Count");

@@ -28,7 +28,7 @@
                  Foreground="AliceBlue"
                  Background="#2c2f33"
                  MinWidth="250"
-                 Text="{Binding Path=currentDebtor.Name}"/>
+                 Text="{Binding Path=Name}" Margin="1,29,0,24"/>
 
         <TextBox x:Name="ValueTextBox"
                  HorizontalAlignment="Left"

@@ -10,11 +10,13 @@ namespace DebtBook
     {
         private string name;
         private ObservableCollection<Debt> debts { get; set; }
-        private readonly Debt noDebt = new Debt(0, DateTime.Now);
+        // private readonly Debt noDebt = new Debt(0, DateTime.Now);
 
-        public Debtor()
-        {
-        }
+        //public Debtor()
+        //{
+        //    name = null;
+        //    debts = new ObservableCollection<Debt>();
+        //}
 
         public Debtor(string _name)
         {
