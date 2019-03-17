@@ -9,7 +9,7 @@ namespace DebtBook
 
         public Debt(double _debtValue, DateTime _date)
         {
-            debtValue = debtValue;
+            _debtValue = debtValue;
             date = _date;
         }
 
