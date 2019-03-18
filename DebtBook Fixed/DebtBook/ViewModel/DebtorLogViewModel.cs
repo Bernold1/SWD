@@ -13,7 +13,9 @@ namespace DebtBook.ViewModel
 {
     public class DebtorLogViewModel:BindableBase
     {
-        
+        public String CurrentDebtorName => _currentDebtor.Name;
+        public ObservableCollection<Debt> _debts => _currentDebtor.debts;
+
         private Debtor currentDebtor;
         private string _insertDebt;
         private ObservableCollection<Debtor> _debtors;
@@ -21,44 +23,31 @@ namespace DebtBook.ViewModel
         public DebtorLogViewModel(ObservableCollection<Debtor> debtors , Debtor debtor)
         {
             _currentDebtor = debtor;
-           // _debts = new ObservableCollection<Debt>(_currentDebtor.debts);
             _debtors = debtors;
         }
 
         #region Properties
 
-        public String CurrentDebtorName => _currentDebtor.Name;
-        public ObservableCollection<Debt> _debts => _currentDebtor.debts;
         public string insertDebt
         {
             get { return _insertDebt;}
             set { SetProperty(ref _insertDebt, value); }
         }
 
-        //public ObservableCollection<Debt> Debts
-        //{
-        //    get { return _debts; }
-        //    set { SetProperty(ref _debts, value); }
-        //}
-
         public Debtor _currentDebtor
         {
             get { return currentDebtor; }
             set { SetProperty(ref currentDebtor, value); }
         }
-        public double Value { get; set; }
+
         #endregion
 
         #region Functions
-        //private void AddValue()
-        //{
-        //    Debt _debt = new Debt(Convert.ToDouble(_insertDebt), DateTime.Now);
-
-        //}
+ 
         private void AddValue()
         {
             _debtors.Remove(_currentDebtor);
-            _currentDebtor.addDebt(Value);
+            _currentDebtor.addDebt(Convert.ToDouble(insertDebt));
             _debtors.Add(_currentDebtor);
         }
 
@@ -73,32 +62,12 @@ namespace DebtBook.ViewModel
             {
                 return _addValue ?? (_addValue =
                            new DelegateCommand(AddValue));
-
-
             }
 
-            //get
-            //{
-            //    return _addValue ?? (_addValue = new DelegateCommand(() =>
-            //    {
-            //        if (int.TryParse(insertDebt, out int n))
-            //        {
-
-            //           // Debts.Add(new Debt(Convert.ToDouble(insertDebt),DateTime.Now));
-            //            //Sidder fast her
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("The value you inserted was not a number, try again");
-            //        }
-            //    }));
-            //}
-
         }
+
+
         #endregion
-
-
-
 
 
     }

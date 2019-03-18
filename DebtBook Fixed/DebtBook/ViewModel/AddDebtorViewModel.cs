@@ -69,47 +69,5 @@ namespace DebtBook.ViewModel
         }
         #endregion
 
-        #region Functions
-
-        //public bool IsValid
-        //{
-        //    get
-        //    {
-        //        bool isValid = true;
-        //        if (string.IsNullOrWhiteSpace(_Name))
-        //            isValid = false;
-        //        return isValid;
-        //    }
-        //    //set
-        //    //{
-        //    //    SetProperty(ref isValid, value);
-        //    //}
-        //}
-
-        //private void AddDebtor_Execute()
-        //{
-        //    currentDebtor = new Debtor(_name);
-        //    currentDebtor.addDebt(initialDebt);
-        //    debtors.Add(currentDebtor);
-        //    RaisePropertyChanged("Count");
-        //}
-
-
-        //private bool AddDebtor_CanExecute()
-        //{
-        //    return IsValid;
-        //    //if (currentDebtor.Name != String.Empty)
-        //    //{
-        //    //    return true;
-        //    //}
-        //    //else
-        //    //{
-        //    //    return false;
-        //    //}
-        //}
-
-
-        #endregion
-
     }
 }

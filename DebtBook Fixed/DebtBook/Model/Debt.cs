@@ -5,27 +5,27 @@ namespace DebtBook
 {
     public class Debt:BindableBase
     {
-        private double debtValue;
+        public double debtValue { get; set; }
         public DateTime _date { get; set; }
-        public double debtSize { get; set; }
 
-        public Debt(double _debtValue, DateTime _date)
+        public Debt(double _debtValue, DateTime dateOfDebt)
         {
-            _debtValue = debtValue;
-            _date = _date;
+            debtValue = _debtValue;
+            _date = dateOfDebt;
+
         }
 
         #region Properties
-        public double _debtValue
-        {
-            get { return debtValue; }
-            set {
-                if (value != debtValue)
-                {
-                    SetProperty(ref debtValue, value);
-                }
-            }
-        }
+        //public double _debtValue
+        //{
+        //    get { return debtValue; }
+        //    set {
+        //        if (value != debtValue)
+        //        {
+        //            SetProperty(ref debtValue, value);
+        //        }
+        //    }
+        //}
         #endregion
 
 

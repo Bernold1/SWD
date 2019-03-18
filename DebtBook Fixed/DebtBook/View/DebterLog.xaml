@@ -9,30 +9,39 @@
         FontFamily="Palatino Linotype" FontSize="16">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="170*"/>
+            <RowDefinition Height="26*"/>
+            <RowDefinition Height="169*"/>
             <RowDefinition Height="74*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="232*"/>
-            <ColumnDefinition Width="87*"/>
+            <ColumnDefinition Width="240*"/>
+            <ColumnDefinition Width="79*"/>
             <ColumnDefinition Width="173*"/>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="listView" HorizontalAlignment="Stretch" 
-                  VerticalAlignment="Stretch" Grid.Column ="0" Grid.RowSpan="2"
-                  Background="#2c2f33" Foreground="AliceBlue" Padding="3" Margin="3" FontSize="10"
-                  >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Debts" Width="100" DisplayMemberBinding="{Binding Path=debtSize}"/>
-                    <GridViewColumn Header="Date of inserted Debt" Width="110" DisplayMemberBinding="{Binding Path= _date}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="AliceBlue">Insert Debt: </Label>
+        <DataGrid Grid.Row="1"
+                  Name="debtors"
+                  ItemsSource="{Binding Path=_debts}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserDeleteRows="False"
+                  CanUserAddRows="False"
+                  FontSize="12"
+                  MinColumnWidth="100"
+                  Margin="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Debt" Binding="{Binding Path=debtValue}"/>
+                <DataGridTextColumn Header="Date of inserted debt" Binding="{Binding Path=_date}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+        <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="12" Foreground="AliceBlue" >Insert Debt:</Label>
 
         <StackPanel Grid.Column="2" Grid.RowSpan="3" >
-            <TextBox x:Name="ValuetextBox" Text="{Binding Path=Value}" Background="#2c2f33" Foreground="AliceBlue" Margin="3"/>
+            <TextBox x:Name="ValuetextBox" Background="#2c2f33" Foreground="AliceBlue" Margin="3">
+                <Binding Path="insertDebt" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox>
             <Button x:Name="AddValButton" Content="Add value"
                     Foreground="AliceBlue" 
                     Background="#2c2f33"
@@ -41,23 +50,16 @@
                     Padding="2"
                     Command="{Binding Path=AddValueCommand}"/>
         </StackPanel>
-        <WrapPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" >
+        <WrapPanel Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5">
 
-            <Button x:Name="CloseButton" Content="Close" 
+            <Button x:Name="button" Content="Close"
                     Foreground="AliceBlue" 
                     Background="#2c2f33"
                     TabIndex="5" 
                     Margin="3"
                     MinWidth="75"
-                    Padding="2"/>
-
-            <Button x:Name="button" Content="Cancel"
-                    Foreground="AliceBlue" 
-                    Background="#2c2f33"
-                    TabIndex="5" 
-                    Margin="3"
-                    MinWidth="75"
-                    Padding="2" IsCancel="True"/>
+                    Padding="2"
+                    IsCancel="True"/>
         </WrapPanel>
     </Grid>
 </Window>
