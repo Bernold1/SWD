@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections.ObjectModel;
+using Prism.Mvvm;
 
 namespace DebtBook
 {
-    public class Debtor
+    public class Debtor:BindableBase
     {
         private string name;
-        private ObservableCollection<Debt> debts { get; set; }
+        public ObservableCollection<Debt> debts;// { get; set; }
+
+        private double _totalDebt = 0;
         // private readonly Debt noDebt = new Debt(0, DateTime.Now);
 
         //public Debtor()
@@ -18,10 +21,14 @@ namespace DebtBook
         //    debts = new ObservableCollection<Debt>();
         //}
 
-        public Debtor(string _name)
+        public Debtor(string _name, double initialDebt)
         {
             name = _name;
             debts = new ObservableCollection<Debt>();
+            if (initialDebt != 0)
+            {
+                addDebt(initialDebt);
+            }
         }
 
         #region Properties
@@ -32,36 +39,23 @@ namespace DebtBook
             set { name = value; }
         }
         
-
-        public ObservableCollection<Debt> CurrentDebt
+        public double totalDebt
         {
-            get
+            get { return _totalDebt;}
+            set
             {
-                //Vi skal finde en måde at sætte værdien til 0, hvis der ikke er nogen værdi
-                    return debts;
+                    SetProperty(ref _totalDebt, value);
             }
-            set { debts = value; }
         }
-
 
         #endregion
 
         #region Functions
-        public void addDebt(Debt _debt)
+        public void addDebt(double debt)
         {
-            debts.Add(_debt);
+            debts.Add(new Debt(debt, DateTime.Now));
+            _totalDebt += debt;
         }
-
-        public double TotalDebt()
-        {
-            double totalDebt = 0;
-            foreach (Debt d in debts)
-            {
-                totalDebt += d._debtValue;
-            }
-            return totalDebt;
-        }
-
         ///<summary>
         /// 
         ///Shallow copies the Debtor user is trying to add or edit debt on

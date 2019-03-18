@@ -28,7 +28,7 @@
                  Foreground="AliceBlue"
                  Background="#2c2f33"
                  MinWidth="250"
-                 Text="{Binding Path=Name}" Margin="1,29,0,24"/>
+                 Text="{Binding Path=_Name}" Margin="1,29,0,24"/>
 
         <TextBox x:Name="ValueTextBox"
                  HorizontalAlignment="Left"
@@ -39,7 +39,7 @@
                  Foreground="AliceBlue"
                  Background="#2c2f33"
                  MinWidth="250"
-                 Text="{Binding Path=currentDebtor.CurrentDebt}"
+                 Text="{Binding Path=_NewDebt}"
                  />
 
         <Label x:Name="NameLabel"
@@ -69,7 +69,7 @@
                     TabIndex="5" 
                     Margin="3"
                     MinWidth="75"
-                    Command="{Binding Path=SaveDebtorCommand}"/>
+                    Command="{Binding Path=SaveCommand}"/>
 
             <Button x:Name="CancelButton"
                     Content="_Cancel" 

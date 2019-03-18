@@ -2,18 +2,32 @@
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DebtBook.ViewModel
 {
     class AddDebtorViewModel: BindableBase
     {
-        private Debtor _currentDebtor;
         private ObservableCollection<Debtor> _debtors;
-        private Debt _debt;
         private string _name;
+        private string newDebt;
 
-        public string Name
+
+        public AddDebtorViewModel(ObservableCollection<Debtor> debtors)
+        {
+            _debtors = debtors;
+        }
+
+        #region Properties
+
+        public ObservableCollection<Debtor> debtors
+        {
+            get { return _debtors; }
+            set { SetProperty(ref _debtors, value); }
+        }
+
+        public string _Name
         {
             get { return _name; }
             set
@@ -25,65 +39,75 @@ namespace DebtBook.ViewModel
             }
         }
 
-
-        public AddDebtorViewModel(ObservableCollection<Debtor> debtors)
+        public string _NewDebt
         {
-            _debtors = debtors;
+            get { return newDebt; }
+            set { SetProperty(ref newDebt, value); }
         }
-
-        #region Properties
-        public Debtor currentDebtor
-        {
-            get { return _currentDebtor; }
-            set { SetProperty(ref _currentDebtor, value); }
-        }
-
-        public ObservableCollection<Debtor> debtors
-        {
-            get { return _debtors; }
-            set { SetProperty(ref _debtors, value); }
-        }
-
-        public Debt debt
-        {
-            get { return _debt; }
-            set { SetProperty(ref _debt, value); }
-        }
-
         #endregion
 
         #region Commands
 
-        private ICommand _saveDebtorCommand;
+        private ICommand _saveAddedDebtorCommand;
 
-        public ICommand SaveDebtorCommand => _saveDebtorCommand ?? (_saveDebtorCommand =
-                                                 new DelegateCommand(AddDebtor));
-                                                    
-
-
+        public ICommand SaveCommand
+        {
+            get
+            {
+                return _saveAddedDebtorCommand ?? (_saveAddedDebtorCommand = new DelegateCommand(() =>
+                {
+                    if (int.TryParse(newDebt, out int n))
+                    {
+                        debtors.Add(new Debtor(_name, Convert.ToDouble(newDebt)));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error trying to add new debtor");
+                    }
+                }));
+            }
+        }
         #endregion
 
         #region Functions
 
-        private void AddDebtor()
-        {
-            currentDebtor = new Debtor(_name);
-            currentDebtor.addDebt(debt);
-            debtors.Add(currentDebtor);
-            //RaisePropertyChanged("Count");
-        }
+        //public bool IsValid
+        //{
+        //    get
+        //    {
+        //        bool isValid = true;
+        //        if (string.IsNullOrWhiteSpace(_Name))
+        //            isValid = false;
+        //        return isValid;
+        //    }
+        //    //set
+        //    //{
+        //    //    SetProperty(ref isValid, value);
+        //    //}
+        //}
 
-        private bool AddDebtorCanExecute()
-        {
-            if (currentDebtor.Name != String.Empty)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //private void AddDebtor_Execute()
+        //{
+        //    currentDebtor = new Debtor(_name);
+        //    currentDebtor.addDebt(initialDebt);
+        //    debtors.Add(currentDebtor);
+        //    RaisePropertyChanged("Count");
+        //}
+
+
+        //private bool AddDebtor_CanExecute()
+        //{
+        //    return IsValid;
+        //    //if (currentDebtor.Name != String.Empty)
+        //    //{
+        //    //    return true;
+        //    //}
+        //    //else
+        //    //{
+        //    //    return false;
+        //    //}
+        //}
+
 
         #endregion
 

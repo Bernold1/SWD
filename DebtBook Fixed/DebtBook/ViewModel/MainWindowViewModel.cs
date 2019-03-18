@@ -30,22 +30,19 @@ namespace DebtBook
         {
             DebtorInsertion = new ObservableCollection<Debtor>()
             {
-                new Debtor("James"),
-                new Debtor("John")
+              new Debtor("James", 100),
+              new Debtor("John", 0.50)
             };
-            CurrentDebtor = DebtorInsertion[0];
+            CurrentDebtor = null; 
 
         }
-
         #region Properties
-  
 
         public Debtor CurrentDebtor
         {
             get { return currentDebtor; }
             set { SetProperty(ref currentDebtor, value); }
         }
-
         public ObservableCollection<Debtor> AllDebtors
         {
             get { return DebtorInsertion; }
@@ -89,8 +86,6 @@ namespace DebtBook
                                                                 };
 
                     _iNavigationService.show(vm);
-                    currentDebtor.CurrentDebt = tempDebtor.CurrentDebt;
-                    currentDebtor.Name = tempDebtor.Name;
                 },
                 () => { return CurrentIndex >= 0; }
                 ).ObservesProperty(()=> CurrentIndex));

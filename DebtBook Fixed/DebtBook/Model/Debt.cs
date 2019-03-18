@@ -1,23 +1,30 @@
 ﻿using System;
+using Prism.Mvvm;
 
 namespace DebtBook
 {
-    public class Debt
+    public class Debt:BindableBase
     {
         private double debtValue;
-        public DateTime date { get; set; }
+        public DateTime _date { get; set; }
+        public double debtSize { get; set; }
 
         public Debt(double _debtValue, DateTime _date)
         {
             _debtValue = debtValue;
-            date = _date;
+            _date = _date;
         }
 
         #region Properties
         public double _debtValue
         {
             get { return debtValue; }
-            set { debtValue = value; }
+            set {
+                if (value != debtValue)
+                {
+                    SetProperty(ref debtValue, value);
+                }
+            }
         }
         #endregion
 
