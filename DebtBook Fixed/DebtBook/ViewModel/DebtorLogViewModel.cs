@@ -73,6 +73,8 @@ namespace DebtBook.ViewModel
             {
                 return _addValue ?? (_addValue =
                            new DelegateCommand(AddValue));
+
+
             }
 
             //get
