@@ -46,9 +46,17 @@ namespace DebtBook.ViewModel
  
         private void AddValue()
         {
-            _debtors.Remove(_currentDebtor);
-            _currentDebtor.addDebt(Convert.ToDouble(insertDebt));
-            _debtors.Add(_currentDebtor);
+            
+            if (double.TryParse(insertDebt, out double num))
+            {
+                _debtors.Remove(_currentDebtor);
+                _currentDebtor.addDebt(Convert.ToDouble(insertDebt));
+                _debtors.Add(_currentDebtor);
+            }
+            else
+            {
+                MessageBox.Show("You inserted something that wasnt a number");
+            }
         }
 
         #endregion
