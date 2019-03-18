@@ -13,7 +13,7 @@ namespace DebtBook.ViewModel
 {
     public class DebtorLogViewModel:BindableBase
     {
-        public Debt GetnewDebt;
+        public Debt GetnewDebt
         private Debtor currentDebtor;
         private ObservableCollection<Debt> _debts;
         private string _insertDebt;
@@ -66,10 +66,9 @@ namespace DebtBook.ViewModel
                 {
                     if (int.TryParse(insertDebt, out int n))
                     {
-                        GetnewDebt = new Debt(Convert.ToDouble(insertDebt), DateTime.Now);
-                        _currentDebtor.addDebt(Convert.ToDouble(insertDebt));
-                        Debts.Add(GetnewDebt);
 
+                        Debts.Add(new Debt(Convert.ToDouble(insertDebt),DateTime.Now));
+                        //Sidder fast her
                     }
                     else
                     {
