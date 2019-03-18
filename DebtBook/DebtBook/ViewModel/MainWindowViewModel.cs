@@ -14,11 +14,13 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using System.Xml.Serialization;
-using DebtBook.Model;
-namespace DebtBook.ViewModel
+using DebtBook.ViewModel;
+
+namespace DebtBook
 {
     public class MainWindowViewModel : BindableBase
     {
+        private readonly INavigationService _iNavigationService = new NavigationService();
         private int currentIndex = -1;
         private ObservableCollection<Debtor> DebtorInsertion;
         private Debtor currentDebtor = null;
@@ -28,21 +30,19 @@ namespace DebtBook.ViewModel
         {
             DebtorInsertion = new ObservableCollection<Debtor>()
             {
-                //new Debtor("James", 199.2m),
-                //new Debtor("John", 10.5m)
+              new Debtor("James", 100),
+              new Debtor("John", 0.50)
             };
-            CurrentDebtor = DebtorInsertion[0];
+            CurrentDebtor = null; 
 
         }
-
-        #region Getters and setters
+        #region Properties
 
         public Debtor CurrentDebtor
         {
             get { return currentDebtor; }
             set { SetProperty(ref currentDebtor, value); }
         }
-
         public ObservableCollection<Debtor> AllDebtors
         {
             get { return DebtorInsertion; }
@@ -58,26 +58,40 @@ namespace DebtBook.ViewModel
 
         #endregion
 
-        #region Delegate Commands
+        #region Commands
 
-        private ICommand _addCommand;
-        //Manger men indeholder "Skabelonen" til det!
-        public ICommand AddCommand
+        private ICommand _AddDebtorCommand;
+        public ICommand AddDebtorCommand
         {
             get
             {
-                return _addCommand ?? (_addCommand = new DelegateCommand(() =>
+                return _AddDebtorCommand ?? (_AddDebtorCommand = new DelegateCommand(() =>
                 {
-                    //Vi skal finde ud af hvordan vi laver et nyt vindue!!
-                    //AllAgents.Add(new Agent());
-                    //CurrentIndex = AllAgents.Count - 1;
+                    var vm = new AddDebtorViewModel(DebtorInsertion);
+                    _iNavigationService.show(vm);
                 }));
             }
         }
 
+        private ICommand _editDebtCommand;
+
+        public ICommand EditDebtCommand
+        {
+            get
+            {
+                return _editDebtCommand ?? (_editDebtCommand = new DelegateCommand(() =>
+                {
+                    var tempDebtor = currentDebtor.Clone();
+                    var vm = new DebtorLogViewModel(DebtorInsertion, CurrentDebtor) { };
+
+                    _iNavigationService.show(vm);
+                },
+                () => { return CurrentIndex >= 0; }
+                ).ObservesProperty(()=> CurrentIndex));
+            }
+        }
 
         private ICommand _deleteCommand;
-        //Skal nok laves om...
         public ICommand DeleteCommand => _deleteCommand ?? (_deleteCommand =
                                              new DelegateCommand(DeleteExecute, DeleteCanExecute).ObservesProperty(() => CurrentIndex));
 
@@ -100,16 +114,6 @@ namespace DebtBook.ViewModel
             }
 
         }
-
-        private ICommand _addDebtCommand;
-
-
-        public ICommand AddDebtCommand
-        {
-            get { return null; }
-        }
-
-
 
 
         #endregion

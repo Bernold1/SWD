@@ -6,49 +6,68 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
-using DebtBook.Model;
 
 namespace DebtBook.ViewModel
 {
-    public class DebtorLogViewModel : BindableBase
+    public class DebtorLogViewModel:BindableBase
     {
+        public String CurrentDebtorName => _currentDebtor.Name;
+        public ObservableCollection<Debt> _debts => _currentDebtor.debts;
 
         private Debtor currentDebtor;
-        private double debt;
+        private string _insertDebt;
+        private ObservableCollection<Debtor> _debtors;
 
-        public DebtorLogViewModel()
+        public DebtorLogViewModel(ObservableCollection<Debtor> debtors , Debtor debtor)
         {
-            
+            _currentDebtor = debtor;
+            _debtors = debtors;
         }
 
-        public double DebtValue
+        #region Properties
+
+        public string insertDebt
         {
-            get => debt;
-            set
-            {
-                if (value != debt)
-                {
-                    debt = value;
-                    RaisePropertyChanged();
-                }
-            }
+            get { return _insertDebt;}
+            set { SetProperty(ref _insertDebt, value); }
         }
 
+        public Debtor _currentDebtor
+        {
+            get { return currentDebtor; }
+            set { SetProperty(ref currentDebtor, value); }
+        }
+
+        #endregion
+
+        #region Functions
+ 
+        private void AddValue()
+        {
+            _debtors.Remove(_currentDebtor);
+            _currentDebtor.addDebt(Convert.ToDouble(insertDebt));
+            _debtors.Add(_currentDebtor);
+        }
+
+        #endregion
+
+        #region Commands
         private ICommand _addValue;
         public ICommand AddValueCommand
         {
+
             get
             {
-                return _addValue ?? (_addValue = new DelegateCommand(AddValue));
+                return _addValue ?? (_addValue =
+                           new DelegateCommand(AddValue));
             }
+
         }
 
-        private void AddValue()
-        {
-            Debt _debt = new Debt(debt, DateTime.Now);
-            
-        }
+
+        #endregion
 
 
     }

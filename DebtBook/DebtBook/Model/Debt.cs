@@ -1,23 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using Prism.Mvvm;
 
-namespace DebtBook.Model
+namespace DebtBook
 {
-    public class Debt
+    public class Debt:BindableBase
     {
-        public double _debtvalue { get; set; }
+        public double debtValue { get; set; }
         public DateTime _date { get; set; }
 
-    
-        public Debt(double debtvalue, DateTime date)
+        public Debt(double _debtValue, DateTime dateOfDebt)
         {
-            _debtvalue = debtvalue;
-            _date = date;
+            debtValue = _debtValue;
+            _date = dateOfDebt;
+
         }
-        
+
+        #region Properties
+        //public double _debtValue
+        //{
+        //    get { return debtValue; }
+        //    set {
+        //        if (value != debtValue)
+        //        {
+        //            SetProperty(ref debtValue, value);
+        //        }
+        //    }
+        //}
+        #endregion
+
+
     }
 }

@@ -68,41 +68,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AddDebterView.xaml">
+    <Page Include="View\AddDebterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DebterLog.xaml">
+    <Page Include="View\DebterLog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddDebterView.xaml.cs">
+    <Compile Include="View\AddDebterView.xaml.cs">
       <DependentUpon>AddDebterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DebterLog.xaml.cs">
+    <Compile Include="View\DebterLog.xaml.cs">
       <DependentUpon>DebterLog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\DebtorLogViewModel.cs" />
     <Compile Include="Model\Debt.cs" />
     <Compile Include="Model\Debtor.cs" />
     <Compile Include="ViewModel\AddDebtorViewModel.cs" />
+    <Compile Include="ViewModel\DebtorLogViewModel.cs" />
     <Compile Include="ViewModel\INavigationService.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="NavigationService.cs" />
+    <Compile Include="ViewModel\NavigationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
