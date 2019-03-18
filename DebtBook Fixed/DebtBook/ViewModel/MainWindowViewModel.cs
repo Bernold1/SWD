@@ -82,7 +82,7 @@ namespace DebtBook
                 return _editDebtCommand ?? (_editDebtCommand = new DelegateCommand(() =>
                 {
                     var tempDebtor = currentDebtor.Clone();
-                    var vm = new DebtorLogViewModel(tempDebtor){//Vi skal måske have tilføjet noget med debts her
+                    var vm = new DebtorLogViewModel(DebtorInsertion, tempDebtor){//Vi skal måske have tilføjet noget med debts her
                                                                 };
 
                     _iNavigationService.show(vm);
