@@ -49,8 +49,10 @@ namespace DebtBook.ViewModel
             
             if (double.TryParse(insertDebt, out double num))
             {
+                //Sletter debtoren fra listen
                 _debtors.Remove(_currentDebtor);
                 _currentDebtor.addDebt(Convert.ToDouble(insertDebt));
+                //Sætter den nye debtor ind på listen
                 _debtors.Add(_currentDebtor);
             }
             else

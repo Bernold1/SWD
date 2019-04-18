@@ -50,9 +50,7 @@
                           Grid.Row="1"
                           Background="#2c2f33" 
                           MinColumnWidth="250"
-                          FontSize="16" 
-
-                          
+                          FontSize="16"          
                 >
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
